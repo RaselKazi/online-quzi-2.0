@@ -6,7 +6,7 @@ import avatar from "../public/img/profile.jpg";
 export default function about() {
   return (
     <Layout>
-      <div className=" w-3/4 h-full mt-44  flex justify-center items-center mx-auto">
+      <div className=" w-3/4 h-full mb-12  flex justify-center items-center mx-auto">
         <div className=" grid grid-cols-1 gap-7 lg:gap-12 lg:grid-cols-3">
           <div className=" flex justify-center items-center">
             <div className=" w-60 h-80 bg-gradient-to-tr from-sky-400 to-sky-100 dark:from-sky-800 dark:to-sky-900/40 rounded-2xl relative border-4 border-gray-300 dark:border-gray-600">

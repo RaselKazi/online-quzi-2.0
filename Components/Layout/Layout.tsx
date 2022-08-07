@@ -10,6 +10,7 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
   const [active, setActive] = useState("");
   const { state, dispatch } = useContext(Store);
   const { theme } = state;
+
   useEffect(() => {
     if (
       localStorage.getItem("theme") === "dark" ||
@@ -29,6 +30,7 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
       payload: colorTheme,
     });
   };
+
   const resetQuiz = () => {
     dispatch({ type: "RESET_QUIZ" });
   };
@@ -41,13 +43,13 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
   return (
     <div className="relative  w-screen flex dark:bg-slate-900 overflow-hidden">
       <div
-        className={`absolute top-0 left-0 lg:block  w-60 lg:w-72 lg:static z-10 bg-white dark:bg-slate-900  transition-all duration-300 ${
-          open ? " block" : "  hidden"
+        className={` fixed lg:sticky lg:block top-0 left-0 w-60 lg:w-72 z-20 bg-white dark:bg-slate-900  transition-all duration-300 ${
+          open ? " block" : " hidden"
         }`}>
         {/* side Ber section */}
 
-        <div className=" h-screen w-full shadow-2xl flex flex-col border-r border-sky-500/50">
-          <div className=" lg:hidden">
+        <div className=" h-screen w-full shadow-2xl flex flex-col border-r border-sky-500/50 ">
+          <div className="lg:hidden">
             {/* CloseButton */}
             <div
               className="w-7 h-7  absolute top-0 right-0 m-3 cursor-pointer bg-gradient-to-b from-red-300 to-red-500 dark:from-slate-800/50 dark:to-red-700 text-2xl font-bold rounded-md text-center p-0.5 text-gray-300 dark:text-red-600  hover:scale-110  shadow-lg shadow-red-500 dark:shadow-red-900 transition-all duration-300"
@@ -109,8 +111,8 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
         </div>
         {/* side Ber section */}
       </div>
-      <div className="w-full">
-        <header className=" flex justify-between items-center h-20 w-full border-b border-sky-400/30 z-50 ">
+      <div className="w-full h-screen max-h-screen ">
+        <header className=" flex justify-between items-center  sticky top-0 w-full z-10  bg-white/25 backdrop-blur border-sky-200 dark:bg-slate-900/25 py-4  border-b  dark:border-sky-900 ">
           <div className="w-1/3">
             <div
               onClick={() => {
@@ -209,7 +211,9 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
           </div>
           {/* Navbar section  */}
         </header>
-        <main>{children}</main>
+        <main className=" w-full h-full min-h-full overflow-scroll ">
+          {children}
+        </main>
       </div>
     </div>
   );

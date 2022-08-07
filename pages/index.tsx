@@ -327,17 +327,7 @@ const Home: NextPage = () => {
                 </h1>
               </div>
               {/* AchievementBases */}
-              {/* 
-           
-              <div className=" col-span-1  md:col-span-2 lg:col-span-1">
-                <AchievementBases
-                  opacity={Math.floor((totalCorrectAns / 110) * 100)}
-                  color="yellow"
-                  tittle="Leader"
-                /> 
-              </div>*/}
             </div>
-
             <div className=" border-t border-gray-200 flex justify-center items-center h-12 dark:border-sky-900  ">
               <p className=" capitalize text-gray-500 cursor-pointer ">
                 view all
@@ -440,12 +430,11 @@ const Home: NextPage = () => {
               <div className=" col-span-2 lg:col-span-1">
                 <div className="">
                   <div
-                    className={`p-2 flex justify-center items-center  h-28 w-28  rounded-3xl shadow-xl  bg-gradient-to-tl from-gray-50 to-gray-100  dark:from-slate-800  dark:to-slate-900/5 rotate-45 overflow-hidden shadow-pink-200 dark:shadow-pink-500/10`}>
+                    className={`p-2 flex justify-center items-center  h-28 w-28  rounded-3xl shadow-xl  bg-gradient-to-tl from-gray-50 to-gray-100  dark:from-slate-800  dark:to-slate-900/5 rotate-45 overflow-hidden shadow-pink-200 dark:shadow-pink-500/10 `}>
                     <div
-                      className={`flex  justify-center items-center rounded-3xl  h-full w-full   bg-gradient-to-tl "from-pink-400/30 to-pink-50 dark:from-pink-500/20  dark:to-slate-800/30 `}>
+                      className={`flex  justify-center items-center rounded-3xl  h-full w-full   bg-gradient-to-tl from-pink-400/30 to-pink-50 dark:from-pink-500/20  dark:to-slate-800/30 `}>
                       <div
-                        className={` p-1 bg-gradient-to-b   rounded-full border-4  shadow-2xl   text-gray-200 -rotate-45 "border-pink-500/60 shadow-pink-500 to-pink-400  from-pink-300 
-          `}>
+                        className={` p-1 bg-gradient-to-b   rounded-full border-4  shadow-2xl   text-gray-200 -rotate-45 border-pink-500/60 shadow-pink-500 to-pink-400  from-pink-300 `}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8 pb-1"
