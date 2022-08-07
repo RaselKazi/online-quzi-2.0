@@ -30,35 +30,18 @@ export default function quiz() {
     (list: { correct: boolean }) => !list.correct
   ).length;
 
-  // function toggle() {
-  //   setIsActive(!isActive);
-  // }
+  function toggle() {
+    setIsActive(!isActive);
+  }
 
   // function reset() {
   //   setTimer(0);
   //   setIsActive(false);
   // }
 
-  // if (timer == 4) {
-  //   setIsActive(false);
-  // }
-
-  // // eslint-disable-next-line react-hooks/rules-of-hooks
-  // useEffect(() => {
-  //   let interval: NodeJS.Timeout;
-  //   if (isActive) {
-  //     interval = setInterval(() => {
-  //       setTimer((timer) => timer + 1);
-  //     }, 1000);
-  //   } else if (!isActive) {
-  //     console.log("bi");
-  //     clearInterval(interval);
-  //   } else if (timer >= 30) {
-  //     console.log("hi");
-  //     clearInterval(interval);
-  //   }
-  //   return () => clearInterval(interval);
-  // }, [isActive, timer]);
+  if (timer == 4) {
+    setIsActive(false);
+  }
 
   return (
     <Layout>
@@ -71,13 +54,14 @@ export default function quiz() {
       </div>
       <div className=" grid grid-cols-8 w-full">
         <div className="col-span-8 lg:col-span-6">
-          <QuizBody
+          {/* <QuizBody
             countdown={countdown / 1000}
             start={start}
-            reset={reset}></QuizBody>
+            reset={reset}></QuizBody> 
         </div>
         <div className=" col-span-2 hidden lg:block">
           <div className=" flex flex-col justify-center items-center ">
+            
             <Clock time={countdown / 1000}></Clock>
             <div className=" flex ">
               <Timer time={countdown / 1000} type="mileSec"></Timer>
