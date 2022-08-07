@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React from "react";
-
+import Layout from "../Components/Layout/Layout";
 import avatar from "../public/img/profile.jpg";
 
 export default function about() {
   return (
-  
+    <Layout>
       <div className=" w-3/4 h-full mt-44  flex justify-center items-center mx-auto">
         <div className=" grid grid-cols-1 gap-7 lg:gap-12 lg:grid-cols-3">
           <div className=" flex justify-center items-center">
@@ -80,6 +80,6 @@ export default function about() {
           </div>
         </div>
       </div>
-   
+    </Layout>
   );
 }

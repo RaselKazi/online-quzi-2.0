@@ -2,12 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /*========== Colors ==========*/
+  --hue-color: 240;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --white-color: #fff;
 }
 
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*------scroll bar---------------------*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 7px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #525965;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #525965;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #525965;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+::-webkit-scrollbar-track:active {
+  background: transparent;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/*=============== CLOCK ===============*/
+
+.clock_circle {
+  box-shadow: -6px -6px 16px var(--white-color),
+    6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1),
+    inset 6px 6px 16px hsla(var(--hue-color), 30%, 86%, 1),
+    inset -6px -6px 16px var(--white-color);
+}
+
+.dark_theme {
+  box-shadow: 6px 6px 16px rgba(1, 2, 4, 0.684),
+    -6px -6px 16px rgba(2, 10, 22, 0.33),
+    inset -6px -6px 16px rgba(6, 2, 20, 0.305),
+    inset 6px 6px 12px rgba(1, 1, 26, 0.407);
+}

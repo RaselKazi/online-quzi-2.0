@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-
+import axios from "axios";
 import { Cookies } from "next/dist/server/web/spec-extension/cookies";
 import Image from "next/image";
 import router, { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-
+import { toast, ToastContainer } from "react-toastify";
 import Input from "../Components/Utils/Input";
 import { Store } from "../Data/Store/Store";
 import avatar from "../public/bg.jpeg";
 import icon from "../public/icon.png";
-
+import "react-toastify/dist/ReactToastify.css";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 export default function login() {
   const [name, setName] = useState("");
@@ -41,42 +42,42 @@ export default function login() {
     }
   }, []);
 
-  // const handelRegister = async (e: { preventDefault: () => void }) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     const { data } = await axios.post("/api/users/register", {
-  //       name,
-  //       email,
-  //       password,
-  //     });
-  //     toast.success("User register successfully");
-  //     dispatch({ type: "USER_LOGIN", payload: data });
-  //     setLoading(false);
-  //     router.push("/quiz");
-  //   } catch (err) {
-  //     setLoading(false);
-  //     toast.error("User register Failed");
-  //   }
-  // };
+  const handelRegister = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const { data } = await axios.post("/api/users/register", {
+        name,
+        email,
+        password,
+      });
+      toast.success("User register successfully");
+      dispatch({ type: "USER_LOGIN", payload: data });
+      setLoading(false);
+      router.push("/quiz");
+    } catch (err) {
+      setLoading(false);
+      toast.error("User register Failed");
+    }
+  };
 
-  // const handelLogin = async (e: { preventDefault: () => void }) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     const { data } = await axios.post("/api/users/login", {
-  //       email,
-  //       password,
-  //     });
-  //     toast.success("User login successfully");
-  //     dispatch({ type: "USER_LOGIN", payload: data });
-  //     setLoading(false);
-  //     router.push("/quiz");
-  //   } catch (err) {
-  //     setLoading(false);
-  //     toast.error("Invalid email or password");
-  //   }
-  // };
+  const handelLogin = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const { data } = await axios.post("/api/users/login", {
+        email,
+        password,
+      });
+      toast.success("User login successfully");
+      dispatch({ type: "USER_LOGIN", payload: data });
+      setLoading(false);
+      router.push("/quiz");
+    } catch (err) {
+      setLoading(false);
+      toast.error("Invalid email or password");
+    }
+  };
   return (
     <div className=" w-screen h-screen max-h-screen overflow-hidden">
       <div className=" absolute top-0 left-0 w-full h-full">
@@ -131,7 +132,7 @@ export default function login() {
               disabled={loading}
               type="submit"
               className="py-2 text-2xl text-center font-semibold text-white bg-sky-400 w-full h-14 capitalize disabled:opacity-30"
-          >
+              onClick={handelRegister}>
               <div className=" flex justify-center items-center">
                 <h1> create account</h1>
                 <div
@@ -145,7 +146,7 @@ export default function login() {
               disabled={loading}
               type="submit"
               className="py-2 text-3xl text-center font-semibold text-white bg-sky-400 w-full h-14 capitalize disabled:opacity-30"
-           >
+              onClick={handelLogin}>
               <div className=" flex justify-center items-center">
                 <h1>Login</h1>
                 <div
@@ -183,7 +184,7 @@ export default function login() {
           </div>
         </form>
       </div>
-    
+      <ToastContainer limit={2} />
     </div>
   );
 }
