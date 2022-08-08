@@ -5,31 +5,14 @@ import { MenuItem } from "../../Data/MenuData";
 import { Store } from "../../Data/Store/Store";
 import avatar from "../../public/img/avatar.png";
 import { useRouter } from "next/router";
+import useTheme from "../../Hook/useTheme";
 
 function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
   const [open, setOpen] = useState(false);
   const { state, dispatch } = useContext(Store);
   const { theme, userInfo } = state;
   const router = useRouter();
-  useEffect(() => {
-    if (
-      localStorage.getItem("theme") === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
-
-  const themeHandler = () => {
-    const colorTheme = theme === "light" ? "dark" : "light";
-    dispatch({
-      type: "UPDATE_THEME",
-      payload: colorTheme,
-    });
-  };
+  const themeHandler = useTheme();
 
   const resetQuiz = () => {
     dispatch({ type: "RESET_QUIZ" });
