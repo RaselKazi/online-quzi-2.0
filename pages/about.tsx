@@ -41,7 +41,7 @@ export default function about() {
                 <div className=" flex mt-3">
                   <a
                     target="_blank"
-                    href="https://www.facebook.com/freelancer.raselkazi"
+                    href="https://www.facebook.com/profile.php?id=100074320713056"
                     className=" mr-8 px-3 rounded-md bg-gradient-to-t from-gray-300/80 to-gray-50 
                 dark:from-slate-800/25 dark:to-slate-700
                   shadow-lg text-2xl font-bold text-blue-500 cursor-pointer hover:translate-y-1 transition-all duration-300"

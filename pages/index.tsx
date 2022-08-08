@@ -2,16 +2,17 @@ import type { NextPage } from "next";
 
 import Head from "next/head";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Layout from "../Components/Layout/Layout";
 import avatar from "../public/img/avatar.png";
 import { Store } from "../Data/Store/Store";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
   const { state, dispatch } = useContext(Store);
 
-  const { answer, currantQuestionId } = state;
-
+  const { answer, currantQuestionId, userInfo } = state;
+  const router = useRouter();
   const totalCorrectAns = answer?.filter(
     (list: { correct: boolean }) => list.correct
   ).length;
@@ -22,6 +23,12 @@ const Home: NextPage = () => {
 
   const calPresent = (total: number, val = 144, per = 100) =>
     Math.floor((total / val) * per);
+
+  useEffect(() => {
+    if (!userInfo.hasOwnProperty("email")) {
+      router.push("/login");
+    }
+  }, []);
   return (
     <Layout>
       <div>
@@ -44,14 +51,14 @@ const Home: NextPage = () => {
               <Image
                 className="rounded-2xl hover:opacity-90 cursor-pointer"
                 alt="avatar"
-                src={avatar}
+                src={userInfo?.img ? userInfo?.img : avatar}
                 layout="responsive"
                 width={380}
                 height={380}></Image>
             </div>
             <div className="col-span-9 ">
               <h1 className="font-sans  font-semibold text-4xl md:text-6xl text-gray-700 tracking-wide dark:text-gray-200">
-                Rasel kazi
+                {userInfo?.name ? userInfo?.name : "avatar"}
               </h1>
               <p className=" font-medium text-lg md:text-xl mt-4 text-gray-400 tracking-wider dark:text-gray-300">
                 {`Bonus booster ${

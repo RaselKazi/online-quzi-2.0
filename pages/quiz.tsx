@@ -10,12 +10,14 @@ import { Store } from "../Data/Store/Store";
 import { useCountdownTimer } from "use-countdown-timer";
 import Head from "next/head";
 import { quizData } from "../Data/quizData";
+import { useRouter } from "next/router";
 
 const defaultExplain = {
   ansId: 0,
   correct: false,
-  text: "",
-  explain: "",
+  text: "Answer no Found",
+  explain:
+    "please select an option. if you get it wrong don't worry I will explain the correct answer",
 };
 
 type QuizExplain = {
@@ -30,7 +32,9 @@ export default function quiz() {
   //quiz
   const [pvs, setPvs] = useState(true);
   const [correctOption, setCorrectOption] = useState(5);
-  const [explain, setExplain] = useState<QuizExplain>({} as QuizExplain);
+  const [explain, setExplain] = useState<QuizExplain>(
+    defaultExplain as QuizExplain
+  );
   const [openModule, setOpenModule] = useState(false);
   const [count, setCount] = useState(30);
   const [nextActive, setNextActive] = useState(true);
@@ -40,7 +44,9 @@ export default function quiz() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { state, dispatch } = useContext(Store);
 
-  const { answer, currantQuestionId, theme } = state;
+  const { answer, currantQuestionId, theme, userInfo } = state;
+
+  const router = useRouter();
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { countdown, start, reset, pause, isRunning } = useCountdownTimer({
     timer: 1000 * 30,
@@ -155,6 +161,12 @@ export default function quiz() {
 
   //QuizBody
 
+  useEffect(() => {
+    if (!userInfo?.hasOwnProperty("email")) {
+      router.push("/login");
+    }
+  }, []);
+
   return (
     <Layout>
       <div>
@@ -204,14 +216,14 @@ export default function quiz() {
                       <div className=" flex justify-center py-8 cursor-pointer group  transition-all duration-500">
                         <div
                           className={` relative text-xl px-14 text-center font-semibold text-gray-900 dark:text-gray-100  dark:bg-gray-700 flex items-center justify-center h-16 w-5/6 md:w-4/6 lg:w-4/6 rounded-lg  transition-all duration-500 shadow-xl bg-gray-50 `}>
-                          {explain.text}
+                          {explain?.text}
                           <div className=" absolute bottom-0 bg-gradient-to-b from-gray-300/50 to-gray-200/20 dark:from-gray-400/40  dark:to-gray-700/10 left-0 w-full h-1/2 "></div>
                           <div className=" absolute top-2   -left-5">
                             <div
                               className={`p-1 flex justify-center items-center  h-12 w-12 rounded-xl shadow-2xl rotate-45 overflow-hidden border-4 bg-gradient-to-tl  " from-sky-600/30 to-gray-50 border-sky-300 `}>
                               <div
                                 className={` w-8 h-8 flex justify-center items-center bg-gradient-to-b  rounded-full  text-gray-200 -rotate-45 text-2xl font-bold  from-sky-100 to-sky-500  text-center`}>
-                                {explain.ansId}
+                                {explain?.ansId}
                               </div>
                             </div>
                           </div>
@@ -220,15 +232,15 @@ export default function quiz() {
                               className={`p-1 flex justify-center items-center  h-12 w-12 rounded-xl shadow-2xl rotate-45 overflow-hidden border-4 bg-gradient-to-tl  " from-sky-600/30 to-gray-50 border-sky-300 `}>
                               <div
                                 className={` w-8 h-8 flex justify-center items-center bg-gradient-to-b  rounded-full  text-gray-200 -rotate-45 text-2xl font-bold  from-sky-100 to-sky-500  text-center`}>
-                                {explain.ansId}
+                                {explain?.ansId}
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className=" font-serif text-lg font-semibold rounded-md text-gray-700 dark:text-gray-300 tracking-tight">
-                      <Markdown>{explain.explain}</Markdown>
+                    <div className=" font-serif text-lg font-semibold rounded-md text-gray-700 dark:text-gray-300 tracking-tight ">
+                      <Markdown>{explain?.explain}</Markdown>
                     </div>
                   </div>
                   <div className=" h-12 w-full bg-gradient-to-b from-gray-300 to-gray-50 dark:from-slate-800 dark:to-slate-600"></div>

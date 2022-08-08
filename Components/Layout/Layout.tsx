@@ -4,13 +4,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { MenuItem } from "../../Data/MenuData";
 import { Store } from "../../Data/Store/Store";
 import avatar from "../../public/img/avatar.png";
+import { useRouter } from "next/router";
 
 function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("");
   const { state, dispatch } = useContext(Store);
-  const { theme } = state;
-
+  const { theme, userInfo } = state;
+  const router = useRouter();
   useEffect(() => {
     if (
       localStorage.getItem("theme") === "dark" ||
@@ -37,8 +37,6 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
   const logOut = () => {
     dispatch({ type: "USER_LOGOUT" });
   };
-
-  console.log(active);
 
   return (
     <div className="relative  w-screen flex dark:bg-slate-900 overflow-hidden">
@@ -85,13 +83,9 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
               className=" relative ml-3 pl-3 py-2 my-2 cursor-pointer group  transition-all duration-500 ">
               <Link href={`${item.link}`} passHref>
                 <div
-                  onClick={() => {
-                    setActive(() => item.title);
-                  }}
                   className={`absolute flex items-center top-0 right-0 pl-8 text-lg font-semibold text-gray-500 dark:text-sky-800  h-full  hover:text-sky-400 dark:hover:text-sky-500 hover:border-r-8 w-5/6 transition-all duration-500 border-sky-300 dark:border-sky-600 hover:bg-gradient-to-r from-white dark:from-slate-900 to-sky-100 dark:to-sky-900/60 capitalize ${
-                    active === item.title
-                      ? " text-sky-400 dark:text-sky-500 border-r-8 bg-gradient-to-r from-white to-sky-100 "
-                      : ""
+                    router.asPath == item.link &&
+                    " text-sky-400 dark:text-sky-500 border-r-8 bg-gradient-to-r from-white to-sky-100 "
                   }  `}>
                   {item.title}
                 </div>
@@ -186,13 +180,13 @@ function Layout({ children }: React.PropsWithChildren<{}>): JSX.Element {
                 <Image
                   className=" rounded-full hover:opacity-90 cursor-pointer"
                   alt="avatar"
-                  src={avatar}
+                  src={userInfo?.img ? userInfo?.img : avatar}
                   layout="fixed"
                   width={40}
                   height={40}></Image>
               </div>
               <h1 className=" hidden lg:block ml-3 cursor-pointer text-slate-600   hover:text-slate-400 text-center font-medium text-lg  dark:text-slate-100  dark:hover:text-slate-400 capitalize  transition-all duration-300">
-                Rasel kazi
+                {userInfo?.name ? userInfo?.name : "avatar"}
               </h1>
 
               <div className=" hidden group-hover:block absolute z-20 top-6 -left-2  w-28 bg-slate-50 rounded-md text-center font-medium text-lg text-slate-600 dark:bg-slate-900 dark:text-slate-200 capitalize border border-slate-300   dark:border-slate-600 group-hover:transition-all duration-300 ">

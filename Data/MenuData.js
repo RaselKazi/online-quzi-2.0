@@ -26,7 +26,7 @@ export const MenuItem = [
   },
   {
     title: "Blog",
-    link: "blog",
+    link: "/blog",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@ export const MenuItem = [
   },
   {
     title: "Quiz",
-    link: "quiz",
+    link: "/quiz",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
