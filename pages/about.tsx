@@ -188,10 +188,10 @@ export default function about() {
           </div>
           {/* Navbar section  */}
         </header>
-        <main className=" w-full h-full min-h-full overflow-scroll ">
-          <div className=" w-3/4 h-full mb-12  flex justify-center items-center mx-auto">
+        <main className=" w-full h-full min-h-full overflow-scroll  ">
+          <div className=" w-10/12 sm:w-3/4 h-full mb-12  flex justify-center items-center mx-auto py-9">
             <div className=" grid grid-cols-1 gap-7 lg:gap-12 lg:grid-cols-3">
-              <div className=" flex justify-center items-center">
+              <div className=" px-5 pt-28 sm:pt-0  flex justify-center items-center">
                 <div className=" w-60 h-80 bg-gradient-to-tr from-sky-400 to-sky-100 dark:from-sky-800 dark:to-sky-900/40 rounded-2xl relative border-4 border-gray-300 dark:border-gray-600">
                   <div className=" absolute h-full w-full top-0 -left-2 -rotate-6 hover:-rotate-12  origin-bottom transition-all duration-500 border-4 rounded-2xl  border-gray-300 dark:border-gray-600 overflow-hidden">
                     <Image
@@ -205,7 +205,7 @@ export default function about() {
                 </div>
               </div>
 
-              <div className=" lg:col-span-2 lg:border-l-2 border-sky-500 lg:px-12 lg:py-6">
+              <div className=" lg:col-span-2 lg:border-l-2 border-sky-500 px-1 lg:px-12 lg:py-6">
                 <div className="">
                   <p className=" text-base font-medium  text-gray-500">
                     I am a Junior Web Developer. Hey, there 👋 I am Rasel Kazi
@@ -217,9 +217,9 @@ export default function about() {
                     Javascript
                   </p>
                 </div>
-                <div className=" flex justify-start items-center my-14">
-                  <div className=" mr-14">
-                    <h1 className="text-xl font-semibold text-gray-400 dark:text-gray-600 capitalize tracking-widest">
+                <div className=" flex justify-start items-center py-10 pb-20 md:pb-2">
+                  <div className=" mr-4 sm:mr-14">
+                    <h1 className=" text-base sm:text-xl font-semibold text-gray-400 dark:text-gray-600 capitalize tracking-widest">
                       contact us
                     </h1>
                     <div className=" flex mt-3">
@@ -252,10 +252,10 @@ export default function about() {
                         height={55}></Image>
                     </div>
                     <div className=" ml-5">
-                      <h1 className=" text-xl font-semibold dark:text-gray-300">
+                      <h1 className=" text-base sm:text-xl font-semibold dark:text-gray-300">
                         Rasel kazi
                       </h1>
-                      <p className=" text-gray-400 dark:text-gray-600">
+                      <p className=" text-sm sm:text-base  text-gray-400 dark:text-gray-600">
                         web developer
                       </p>
                     </div>

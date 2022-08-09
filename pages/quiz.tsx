@@ -174,10 +174,10 @@ export default function quiz() {
   //QuizBody
 
   useEffect(() => {
-    if (!userInfo?.hasOwnProperty("email")) {
+    if (!userInfo?.hasOwnProperty("email") && currantQuestionId >= 5) {
       router.push("/login");
     }
-  }, []);
+  }, [currantQuestionId]);
 
   return (
     <div className="relative  w-screen flex dark:bg-slate-900 overflow-hidden">
@@ -346,7 +346,7 @@ export default function quiz() {
           </div>
           {/* Navbar section  */}
         </header>
-        <main className=" w-full h-full min-h-full overflow-scroll ">
+        <main className=" w-full h-full min-h-full overflow-scroll pb-16 ">
           <div>
             <Head>
               <title>RaselKazi-Quiz</title>
@@ -358,7 +358,7 @@ export default function quiz() {
             <div className="col-span-8 lg:col-span-6">
               {/* QuizBody */}
 
-              <div className="  px-12 py-4  flex justify-center">
+              <div className=" px-4 py-4  lg:px-12 lg:py-4  flex justify-center">
                 {/* module */}
                 {openModule && (
                   <div
@@ -460,8 +460,8 @@ export default function quiz() {
                                   (30 - countdown / 1000) * 12
                                 }deg)`,
                               }}
-                              className=" relative h-7 w-7 rounded-full border-2 border-gray-200">
-                              <div className=" absolute top-1 left-1/2 h-[10px] w-0.5 border-b-2 bg-purple-500  border-gray-100  "></div>
+                              className=" relative h-7 w-7 rounded-full border-2  dark:border-gray-200 border-gray-700">
+                              <div className=" absolute top-1 left-1/2 h-[10px] w-0.5 border-b-2 bg-purple-500   dark:border-gray-100 border-gray-900  "></div>
                             </div>
                           </div>
 
@@ -576,9 +576,9 @@ export default function quiz() {
                   </div>
 
                   <div className=" w-full h-20 px-6 py-2 border-t border-sky-300 dark:border-sky-500/40  flex justify-between items-center">
-                    <div className=" text-xl font-semibold text-gray-700 dark:text-gray-300">
-                      <p className=" flex">
-                        {`${currantQuestionId} of ${quizData.length} `}{" "}
+                    <div className="  text-xl font-semibold text-gray-700 dark:text-gray-300">
+                      <p className=" hidden sm:flex">
+                        {`${currantQuestionId} of ${quizData.length} `}
                         <span className=" ml-4 hidden lg:block">Question</span>
                       </p>
                     </div>
