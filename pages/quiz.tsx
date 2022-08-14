@@ -400,7 +400,7 @@ export default function quiz() {
                                 <div
                                   className={`p-1 flex justify-center items-center  h-12 w-12 rounded-xl shadow-2xl rotate-45 overflow-hidden border-4 bg-gradient-to-tl  " from-sky-600/30 to-gray-50 border-sky-300 `}>
                                   <div
-                                    className={` w-8 h-8 flex justify-center items-center bg-gradient-to-b  rounded-full  text-gray-200 -rotate-45 text-2xl font-bold  from-sky-100 to-sky-500  text-center`}>
+                                    className={` w-8 h-8 flex justify-center items-center bg-gradient-to-b  rounded-full  text-gray-200 -rotate-45  text-2xl font-bold  from-sky-100 to-sky-500  text-center`}>
                                     {explain?.ansId}
                                   </div>
                                 </div>
@@ -417,7 +417,7 @@ export default function quiz() {
                             </div>
                           </div>
                         </div>
-                        <div className=" font-serif text-lg font-semibold rounded-md text-gray-700 dark:text-gray-300 tracking-tight ">
+                        <div className=" font-serif   text-sm md:text-lg font-semibold rounded-md text-gray-700 dark:text-gray-300 tracking-tight ">
                           <Markdown>{explain?.explain}</Markdown>
                         </div>
                       </div>
@@ -430,7 +430,7 @@ export default function quiz() {
                   <div className=" w-full h-20">
                     <div className="p-3 px-6 grid grid-cols-2">
                       <div className="">
-                        <h1 className="text-2xl font-bold text-gray-400 dark:text-gray-300">
+                        <h1 className=" text-base sm:text-2xl font-bold text-gray-400 dark:text-gray-300">
                           Hello world!
                         </h1>
                       </div>
@@ -501,7 +501,7 @@ export default function quiz() {
                               <div className=" absolute top-3 right-2 h-4 w-4 rounded-full bg-gradient-to-b from-red-100 to-red-600  shadow-md shadow-red-500"></div>
                               <div className=" absolute top-3 right-8 h-4 w-4 rounded-full bg-gradient-to-b from-yellow-100 to-yellow-600  shadow-md shadow-yellow-500 "></div>
                               <div className=" absolute top-3 right-14 h-4 w-4 rounded-full bg-gradient-to-b from-green-100 to-green-600  shadow-md shadow-green-500"></div>
-                              <h1 className="py-3 px-6 pr-16 text-xl font-bold  bg-gradient-to-b from-gray-50 to-gray-300  text-gray-600  dark:from-slate-900  dark:to-slate-700   dark:text-gray-300">
+                              <h1 className="py-3 px-6 pr-16  text-base sm:text-xl font-bold  bg-gradient-to-b from-gray-50 to-gray-300  text-gray-600  dark:from-slate-900  dark:to-slate-700   dark:text-gray-300">
                                 {qu.title}
                               </h1>
                               <div className="">
@@ -512,12 +512,12 @@ export default function quiz() {
                                     theme === "dark" ? dracula : githubLight
                                   }
                                   extensions={[javascript({ jsx: true })]}
-                                  className=" h text-xl overflow-y-auto "
+                                  className=" text-xm sm:text-sm   md:text-xl overflow-y-auto "
                                 />
                               </div>
                             </div>
 
-                            <div className=" ml-10 mt-6 m-4 grid grid-cols-1 md:grid-cols-2">
+                            <div className=" ml-4  sm:ml-10 mt-6 m-4 grid grid-cols-1 md:grid-cols-2">
                               {qu.options.map((option, id) => {
                                 return (
                                   <div
@@ -532,7 +532,7 @@ export default function quiz() {
                                     {/* QuizOption */}
                                     <div className=" relative mb-3 cursor-pointer group  transition-all duration-500">
                                       <div
-                                        className={` pl-7 lg:text-base text-center font-semibold text-gray-700 dark:text-gray-200 absolute flex items-center justify-center top-0 left-6 h-full  rounded-lg border-r-8  w-5/6 transition-all duration-500 shadow-xl ${
+                                        className={` pl-7 lg:text-base text-xs sm:text-sm  text-center font-semibold text-gray-700 dark:text-gray-200 absolute flex items-center justify-center top-0 left-6 h-full  rounded-lg border-r-8  w-5/6 transition-all duration-500 shadow-xl ${
                                           correctOption === id
                                             ? option.correct
                                               ? "border-green-300 bg-green-100 dark:border-green-700  dark:bg-green-800"

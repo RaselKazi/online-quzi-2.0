@@ -11,6 +11,7 @@ handler.post(async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const user = await User.findOne({ email: req.body.email });
+    console.log(user);
     const hashPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (user && hashPassword) {

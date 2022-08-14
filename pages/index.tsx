@@ -19,6 +19,11 @@ const Home: NextPage = () => {
   const router = useRouter();
   const themeHandler = useTheme();
 
+  useEffect(() => {
+    if (!userInfo?.hasOwnProperty("email") && currantQuestionId >= 5) {
+      router.push("/login");
+    }
+  }, [currantQuestionId]);
   const resetQuiz = () => {
     dispatch({ type: "RESET_QUIZ" });
   };
@@ -36,11 +41,6 @@ const Home: NextPage = () => {
   const calPresent = (total: number, val = 144, per = 100) =>
     Math.floor((total / val) * per);
 
-  useEffect(() => {
-    if (!userInfo?.hasOwnProperty("email") && currantQuestionId >= 5) {
-      router.push("/login");
-    }
-  }, [currantQuestionId]);
   return (
     <div className="relative  w-screen flex dark:bg-slate-900 overflow-hidden">
       <div
@@ -235,10 +235,10 @@ const Home: NextPage = () => {
                     height={380}></Image>
                 </div>
                 <div className="col-span-9 ">
-                  <h1 className="font-sans  font-semibold text-4xl md:text-6xl text-gray-700 tracking-wide dark:text-gray-200">
+                  <h1 className="font-sans  font-semibold text-2xl sm:text-4xl md:text-6xl text-gray-700 tracking-wide dark:text-gray-200">
                     {userInfo?.name ? userInfo?.name : "avatar"}
                   </h1>
-                  <p className=" font-medium text-lg md:text-xl mt-4 text-gray-400 tracking-wider dark:text-gray-300">
+                  <p className=" font-medium text-sm sm:text-lg md:text-xl  mt-0 sm:mt-4 text-gray-400 tracking-wider dark:text-gray-300">
                     {`Bonus booster ${
                       totalAnswer ? Math.floor((totalAnswer / 144) * 20) : "0"
                     } Lv`}
@@ -264,15 +264,15 @@ const Home: NextPage = () => {
                     </div>
                     {/* ProgressBar */}
 
-                    <div className=" absolute -top-9 right-1 font-medium text-gray-400 text-sm md:text-base ">
+                    <div className=" hidden sm:block absolute -top-9 right-1 font-medium text-gray-400 text-sm md:text-base ">
                       {`${totalAnswer}0/1440 xp`}
                     </div>
                   </div>
 
                   <div className=" flex justify-between">
                     {/* IconCard */}
-                    <div className=" flex gap-2 items-center">
-                      <div className="p-1 md:p-4 rounded-2xl shadow-lg text-gray-600 dark:text-gray-100">
+                    <div className=" flex  gap-2 items-center">
+                      <div className=" hidden sm:block p-1 md:p-4 rounded-2xl shadow-lg text-gray-600 dark:text-gray-100 bg-slate-50 dark:bg-slate-800">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8"
@@ -286,16 +286,16 @@ const Home: NextPage = () => {
                         </svg>
                       </div>
                       <div className=" ml-1 md:ml-3 lg:ml-5 ">
-                        <h1 className=" font-bold text-xl lg:text-3xl  text-gray-700 dark:text-gray-100">
+                        <h1 className=" font-bold text-xl lg:text-3xl  text-gray-700 dark:text-gray-100 text-center ">
                           27
                         </h1>
-                        <p className="font-medium text-sm md:text-base text-gray-400 dark:text-gray-500">
+                        <p className="font-medium sm:text-sm text-xs md:text-base text-gray-400 dark:text-gray-500">
                           Game Wins
                         </p>
                       </div>
                     </div>
                     <div className=" flex gap-2 items-center">
-                      <div className="p-1 md:p-4 rounded-2xl shadow-lg text-gray-600 dark:text-gray-100">
+                      <div className=" hidden sm:block p-1 md:p-4 rounded-2xl shadow-lg text-gray-600 dark:text-gray-100 bg-slate-50 dark:bg-slate-800 ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8"
@@ -309,16 +309,16 @@ const Home: NextPage = () => {
                         </svg>
                       </div>
                       <div className=" ml-1 md:ml-3 lg:ml-5 ">
-                        <h1 className=" font-bold text-xl lg:text-3xl  text-gray-700 dark:text-gray-100">
+                        <h1 className=" font-bold text-xl lg:text-3xl  text-gray-700 dark:text-gray-100 text-center ">
                           {totalWrongAns}
                         </h1>
-                        <p className="font-medium text-sm md:text-base text-gray-400 dark:text-gray-500">
+                        <p className="font-medium  text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500">
                           Wrong Answer
                         </p>
                       </div>
                     </div>
                     <div className=" flex gap-2 items-center">
-                      <div className="p-1 md:p-4 rounded-2xl shadow-lg text-gray-600 dark:text-gray-100">
+                      <div className=" hidden sm:block p-1 md:p-4 rounded-2xl shadow-lg text-gray-600 dark:text-gray-100 bg-slate-50 dark:bg-slate-800 ">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8"
@@ -332,10 +332,10 @@ const Home: NextPage = () => {
                         </svg>
                       </div>
                       <div className=" ml-1 md:ml-3 lg:ml-5 ">
-                        <h1 className=" font-bold text-xl lg:text-3xl  text-gray-700 dark:text-gray-100">
+                        <h1 className=" font-bold text-xl lg:text-3xl  text-gray-700 dark:text-gray-100 text-center ">
                           {totalCorrectAns}
                         </h1>
-                        <p className="font-medium text-sm md:text-base text-gray-400 dark:text-gray-500">
+                        <p className="font-medium  text-xs sm:text-sm md:text-base text-gray-400 dark:text-gray-500">
                           Correct Answers
                         </p>
                       </div>
@@ -349,12 +349,12 @@ const Home: NextPage = () => {
             <div className=" grid grid-cols-1 md:grid-cols-2 gap-6 mx-8">
               {/* AchievementCard */}
               <div className=" rounded-2xl shadow-xl px-8 pt-10  dark:bg-slate-800/60">
-                <div className=" flex items-center gap-6">
-                  <div className=" flex w-2/3 gap-6 items-center">
-                    <h1 className="font-semibold text-xl text-black dark:text-slate-300">
+                <div className=" flex items-center gap-2 md:gap-6 ">
+                  <div className=" flex w-2/3 gap-2 md:gap-6 items-center">
+                    <h1 className="font-semibold  text-xs sm:text-base md:text-lg lg:text-xl text-black dark:text-slate-300">
                       AchievementCard
                     </h1>
-                    <p className=" py-1 px-2 font-medium  text-gray-900 dark:text-gray-300 rounded-lg bg-gray-300 dark:bg-slate-700 ">
+                    <p className=" py-1 px-2 font-medium  text-gray-900  dark:text-gray-300 rounded-lg bg-gray-300 dark:bg-slate-700 ">
                       {calPresent(totalAnswer, 120, 3)}
                     </p>
                   </div>
@@ -527,12 +527,12 @@ const Home: NextPage = () => {
               {/* InventoryCard */}
 
               <div className=" rounded-2xl shadow-xl px-8 pt-10 dark:bg-slate-800/60 ">
-                <div className=" flex items-center gap-6">
-                  <div className=" flex w-2/3 gap-6 items-center">
-                    <h1 className="font-semibold text-xl text-black dark:text-slate-300 ">
+                <div className=" flex items-center lg:gap-6 gap-2">
+                  <div className=" flex w-2/3 gap-2 md:gap-6 items-center">
+                    <h1 className="font-semibold  text-black dark:text-slate-300 text-xs sm:text-base md:text-lg lg:text-xl ">
                       InventoryCard
                     </h1>
-                    <p className=" py-1 px-2 font-medium  text-gray-900 dark:text-gray-300 rounded-lg bg-gray-300 dark:bg-slate-700 ">
+                    <p className=" text-xs sm:text-base md:text-lg lg:text-xl  py-1 px-2 font-medium  text-gray-900 dark:text-gray-300 rounded-lg bg-gray-300 dark:bg-slate-700 ">
                       4
                     </p>
                   </div>
