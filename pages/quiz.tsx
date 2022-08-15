@@ -393,7 +393,7 @@ export default function quiz() {
                         <div className="">
                           <div className=" flex justify-center py-8 cursor-pointer group  transition-all duration-500">
                             <div
-                              className={` relative text-xl px-14 text-center font-semibold text-gray-900 dark:text-gray-100  dark:bg-gray-700 flex items-center justify-center h-16 w-5/6 md:w-4/6 lg:w-4/6 rounded-lg  transition-all duration-500 shadow-xl bg-gray-50 `}>
+                              className={` relative text-xs sm:text-sm md:text-xl px-14 text-center font-semibold text-gray-900 dark:text-gray-100  dark:bg-gray-700 flex items-center justify-center h-16 w-5/6 md:w-4/6 lg:w-4/6 rounded-lg  transition-all duration-500 shadow-xl bg-gray-50 `}>
                               {explain?.text}
                               <div className=" absolute bottom-0 bg-gradient-to-b from-gray-300/50 to-gray-200/20 dark:from-gray-400/40  dark:to-gray-700/10 left-0 w-full h-1/2 "></div>
                               <div className=" absolute top-2   -left-5">

@@ -131,16 +131,16 @@ export default function login() {
       <div className="flex justify-center items-center h-full">
         <div className="w-5/6 md:w-4/6 lg:w-2/6 px-6 py-8 border border-sky-500/50 bg-slate-900/30 backdrop-blur  rounded-xl">
           <form className=" ">
-            <h1 className=" py-4 text-4xl text-center font-semibold text-white capitalize">
+            <h1 className=" py-4 text-base sm:text-lg md:text-4xl  text-center font-semibold text-white capitalize">
               create an account
             </h1>
 
             <div className=" flex flex-col items-center">
               <div
-                className="flex items-center justify-center text-xl font-bold bg-slate-900/30 border border-sky-500 px-4 py-2 rounded-full cursor-pointer text-slate-50  transition-all duration-300 hover:bg-slate-100  hover:text-sky-500 "
+                className="flex items-center justify-center   text-xs md:text-xl font-bold bg-slate-900/30 border border-sky-500 px-4 py-2 rounded-full cursor-pointer text-slate-50  transition-all duration-300 hover:bg-slate-100  hover:text-sky-500 "
                 onClick={signInGoogle}>
                 <Image
-                  className=" h-screen "
+                  className=""
                   alt="avatar"
                   src={icon}
                   layout="fixed"
@@ -258,7 +258,7 @@ export default function login() {
             {open ? (
               <button
                 disabled={loading}
-                className="py-2 text-2xl text-center font-semibold text-white bg-sky-400 w-full h-14 capitalize disabled:opacity-50"
+                className="py-2 text-lg sm:text-xl md:text-3xl text-center font-semibold text-white bg-sky-400 w-full h-14 capitalize disabled:opacity-50"
                 onClick={handelRegister}>
                 <div className=" flex justify-center items-center">
                   <h1> create account</h1>
@@ -271,7 +271,7 @@ export default function login() {
             ) : (
               <button
                 disabled={loading}
-                className="py-2 text-3xl text-center font-semibold text-white bg-sky-400 w-full h-14 capitalize disabled:opacity-50"
+                className="py-2 text-lg sm:text-xl md:text-3xl  text-center font-semibold text-white bg-sky-400 w-full h-14 capitalize disabled:opacity-50"
                 onClick={handelLogin}>
                 <div className=" flex justify-center items-center">
                   <h1>Login</h1>
